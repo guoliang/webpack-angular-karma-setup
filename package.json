@@ -1,0 +1,25 @@
+{
+  "name": "webpack-angular-karma-setup",
+  "version": "0.0.1",
+  "description": "Base project with configuration files",
+  "main": "/",
+  "scripts": {
+    "test": "node_modules/.bin/karma start karma.conf.js",
+    "test-single": "node_modules/.bin/karma start karma.conf.js --single-run"
+  },
+  "author": "Leung Wong <wguoliang1113@gmail.com",
+  "license": "ISC",
+  "devDependencies": {
+    "angular": "^1.5.6",
+    "angular-mocks": "^1.5.6",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.12.37",
+    "karma-jasmine": "^1.0.2",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "karma-webpack": "^1.6.0",
+    "phantomjs-prebuilt": "^2.1.7",
+    "ts-loader": "^0.8.2",
+    "typescript": "^1.8.10",
+    "webpack": "^1.13.1"
+  }
+}
