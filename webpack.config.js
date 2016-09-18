@@ -1,7 +1,8 @@
 var CopyWebpackPlugin = require("copy-webpack-plugin");
 var path = require("path");
+var webpack = require("webpack");
 
-module.exports = {
+var config = {
     "context": path.join(__dirname, "/src"),
 
     "entry": {
@@ -9,10 +10,9 @@ module.exports = {
         "vendors": ["angular"]
     },
     "output": {
-        "path": "./dist/scripts",
+        "path": path.join(__dirname, "./dist/scripts"),
         "filename": "[name].bundle.js"
     },
-    "devtool": "source-maps",
     "resolve": {
         "extensions": ['', '.ts', '.js']
     },
@@ -35,5 +35,17 @@ module.exports = {
             {
                 ignore: ["*.ts"]
             }
-        )]
+        ),
+        new webpack.DefinePlugin({
+            "process_env": {
+                "NODE_ENV": JSON.stringify(process.env.NODE_ENV)
+            }
+        }
+    )]
+};
+
+if (process.env.NODE_ENV !== "production") {
+    config.devtool = "source-map"
 }
+
+module.exports = config;

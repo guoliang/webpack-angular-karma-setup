@@ -4,6 +4,8 @@
   "description": "Base project with configuration files",
   "main": "/",
   "scripts": {
+    "build": "cmd /c make.cmd production",
+    "build-dev": "cmd /c make.cmd development",
     "test": "node_modules/.bin/karma start karma.conf.js",
     "test-single": "node_modules/.bin/karma start karma.conf.js --single-run"
   },
