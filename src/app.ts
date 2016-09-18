@@ -1,4 +1,4 @@
-import {FooModule} from "../src/foo/FooCtrl";
+import {FooModule} from "./foo/FooCtrl";
 
 namespace App {
     export class Module {

@@ -1,17 +1,20 @@
-
-var APP = __dirname + "/src";
+var CopyWebpackPlugin = require("copy-webpack-plugin");
+var path = require("path");
 
 module.exports = {
+    "context": path.join(__dirname, "/src"),
+
     "entry": {
-        "app": [APP + "/main.ts"],
+        "app": ["./app.ts"],
         "vendors": ["angular"]
     },
     "output": {
-        "path": APP + "/scripts",
+        "path": "./dist/scripts",
         "filename": "[name].bundle.js"
     },
+    "devtool": "source-maps",
     "resolve": {
-        "extensions": ['', '.webpack.js', '.web.js', '.ts', '.js']
+        "extensions": ['', '.ts', '.js']
     },
     "module": {
         "loaders": [
@@ -21,5 +24,16 @@ module.exports = {
                 "exclude": "/node_modules/"
             }
         ]
-    }
+    },
+    "plugins": [
+        new CopyWebpackPlugin([
+            {
+                from: "**/*",
+                to: "../"
+            }
+        ],
+            {
+                ignore: ["*.ts"]
+            }
+        )]
 }
