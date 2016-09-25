@@ -1,31 +1,38 @@
 var CopyWebpackPlugin = require("copy-webpack-plugin");
-var path = require("path");
-var webpack = require("webpack");
+let ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-var config = {
-    "context": path.join(__dirname, "/src"),
+let path = require("path");
+let webpack = require("webpack");
 
-    "entry": {
-        "app": ["./app.ts"],
-        "vendors": ["angular"]
+let config = {
+    context: path.join(__dirname, "/src"),
+
+    entry: {
+        app: ["./app.ts", "./app.less"],
+        vendors: ["angular"]
     },
-    "output": {
-        "path": path.join(__dirname, "./dist/scripts"),
-        "filename": "[name].bundle.js"
+    output: {
+        path: path.join(__dirname, "./dist/scripts"),
+        filename: "[name].bundle.js"
     },
-    "resolve": {
-        "extensions": ['', '.ts', '.js']
+    resolve: {
+        extensions: ['', '.ts', '.js']
     },
-    "module": {
-        "loaders": [
+    module: {
+        loaders: [
             {
-                "test": /\.ts$/,
-                "loader": "ts-loader",
-                "exclude": "/node_modules/"
+                test: /\.ts$/,
+                loader: "ts-loader",
+                exclude: "/node_modules/"
+            },
+            {
+                test: /\.less$/,
+                loader: ExtractTextPlugin.extract("css-loader?sourceMap!less-loader?source-Map"),
+                exclude: "/node_modules/"
             }
         ]
     },
-    "plugins": [
+    plugins: [
         new CopyWebpackPlugin([
             {
                 from: "**/*",
@@ -33,12 +40,16 @@ var config = {
             }
         ],
             {
-                ignore: ["*.ts"]
+                ignore: ["*.ts", "*.less"]
             }
         ),
+        new ExtractTextPlugin(
+            "../dist/[name].bundle.css",
+            { allChunks: true }
+        ),
         new webpack.DefinePlugin({
-            "process_env": {
-                "NODE_ENV": JSON.stringify(process.env.NODE_ENV)
+            process_env: {
+                NODE_ENV: JSON.stringify(process.env.NODE_ENV)
             }
         }
     )]
