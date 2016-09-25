@@ -6,6 +6,7 @@
   "scripts": {
     "build": "cmd /c make.cmd production",
     "build-dev": "cmd /c make.cmd development",
+    "clean": "cmd /c make.cmd clean",
     "test": "node_modules/.bin/karma start karma.conf.js",
     "test-single": "node_modules/.bin/karma start karma.conf.js --single-run"
   },
