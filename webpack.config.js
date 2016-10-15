@@ -12,7 +12,7 @@ let config = {
         vendors: ["angular"]
     },
     output: {
-        path: path.join(__dirname, "./dist/scripts"),
+        path: path.join(__dirname, "./dist/assets/scripts"),
         filename: "[name].bundle.js"
     },
     resolve: {
@@ -36,7 +36,7 @@ let config = {
         new CopyWebpackPlugin([
             {
                 from: "**/*",
-                to: "../"
+                to: "../../"
             }
         ],
             {
@@ -44,7 +44,7 @@ let config = {
             }
         ),
         new ExtractTextPlugin(
-            "../dist/[name].bundle.css",
+            "../../assets/styles/[name].bundle.css",
             { allChunks: true }
         ),
         new webpack.DefinePlugin({
