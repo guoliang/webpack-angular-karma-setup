@@ -2,8 +2,11 @@
   "name": "webpack-angular-karma-setup",
   "dependencies": {},
   "globalDependencies": {
-    "angular": "registry:dt/angular#1.5.0+20160602160139",
-    "jasmine": "registry:dt/jasmine#2.2.0+20160505161446",
-    "jquery": "registry:dt/jquery#1.10.0+20160417213236"
+    "angular": "registry:dt/angular#1.5.0+20160922195358",
+    "jasmine": "registry:dt/jasmine#2.5.0+20161003201800",
+    "jquery": "registry:dt/jquery#1.10.0+20160929162922",
+    "source-map": "registry:dt/source-map#0.0.0+20161003134342",
+    "uglify-js": "registry:dt/uglify-js#2.6.1+20160316155526",
+    "webpack": "registry:dt/webpack#1.12.9+20160927034556"
   }
 }

@@ -9,7 +9,7 @@ namespace App {
             this.app = angular.module(name, modules);
         }
 
-        public addController(name: string, controller: Function) {
+        public addController(name: string, controller: ng.IControllerConstructor) {
             this.app.controller(name, controller);
         }
 
