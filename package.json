@@ -4,9 +4,9 @@
   "description": "Base project with configuration files",
   "main": "/",
   "scripts": {
-    "build": "cmd /c make.cmd production",
-    "build-dev": "cmd /c make.cmd development",
-    "clean": "cmd /c make.cmd clean",
+    "build": "bash -c 'NODE_ENV=production webpack'",
+    "build-dev": "webpack",
+    "clean": "bash -c 'rm -rf dist'",
     "test": "node_modules/.bin/karma start karma.conf.js",
     "test-single": "node_modules/.bin/karma start karma.conf.js --single-run"
   },
